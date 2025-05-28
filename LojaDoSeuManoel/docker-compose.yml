@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: ${SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - loja-network
+
+  embalagemapi:
+    build:
+      context: ..
+      dockerfile: Embalagem.API/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - sqlserver
+    networks:
+      - loja-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DB_PASSWORD=${SA_PASSWORD}
+
+networks:
+  loja-network:
