@@ -3,7 +3,7 @@ using LojaDoSeuManoel.Models;
 using LojaDoSeuManoel.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Embalagem.API.Controllers;
+namespace LojaDoSeuManoel.Controllers;
 
 [ApiController]
 [Route("[controller]")]

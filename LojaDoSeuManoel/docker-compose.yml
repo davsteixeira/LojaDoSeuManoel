@@ -11,7 +11,7 @@ services:
     networks:
       - loja-network
 
-  embalagemapi:
+  lojadoseumanoel:
     build:
       context: ..
       dockerfile: LojaDoSeuManoel/Dockerfile

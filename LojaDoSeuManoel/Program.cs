@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Constrói a connection string dinamicamente
+// Constrï¿½i a connection string dinamicamente
 var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "SenhaNaoInformada";
-var connectionString = $"Server=sqlserver,1433;Database=EmbalagemDb;User Id=sa;Password={dbPassword};TrustServerCertificate=True;";
+var connectionString = $"Server=sqlserver,1433;Database=LojaDoSeuManoel;User Id=sa;Password={dbPassword};TrustServerCertificate=True;";
 
 builder.Services.AddDbContext<EmbalagemDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -25,4 +25,5 @@ app.UseSwaggerUI();
 app.UseAuthorization();
 app.MapControllers();
 
+app.Urls.Add("http://0.0.0.0:80");
 app.Run();

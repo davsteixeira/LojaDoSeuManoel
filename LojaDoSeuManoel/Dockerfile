@@ -5,9 +5,9 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["LojaDoSeuManoel/LojaDoSeuManoel.csproj", "LojaDoSeuManoel/"]
-RUN dotnet restore "Embalagem.API/Embalagem.API.csproj"
+RUN dotnet restore "LojaDoSeuManoel/LojaDoSeuManoel.csproj"
 COPY . .
-WORKDIR "/src/Embalagem.API"
+WORKDIR "/src/LojaDoSeuManoel"
 RUN dotnet build "LojaDoSeuManoel.csproj" -c Release -o /app/build
 
 FROM build AS publish
@@ -16,4 +16,4 @@ RUN dotnet publish "LojaDoSeuManoel.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Embalagem.API.dll"]
+ENTRYPOINT ["dotnet", "LojaDoSeuManoel.dll"]
