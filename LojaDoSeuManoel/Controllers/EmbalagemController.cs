@@ -1,6 +1,6 @@
-﻿using Embalagem.API.Dtos;
-using Embalagem.API.Models;
-using Embalagem.API.Services;
+﻿using LojaDoSeuManoel.Dtos;
+using LojaDoSeuManoel.Models;
+using LojaDoSeuManoel.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Embalagem.API.Controllers;

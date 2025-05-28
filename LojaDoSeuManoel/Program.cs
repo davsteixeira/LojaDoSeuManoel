@@ -1,5 +1,5 @@
-using Embalagem.API.Data;
-using Embalagem.API.Services;
+using LojaDoSeuManoel.Data;
+using LojaDoSeuManoel.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

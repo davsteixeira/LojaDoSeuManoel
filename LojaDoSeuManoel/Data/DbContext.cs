@@ -1,9 +1,7 @@
-﻿// Em: Embalagem.API/Data/EmbalagemDbContext.cs
-using Microsoft.EntityFrameworkCore;
-using Embalagem.API.Models;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using LojaDoSeuManoel.Models;
 
-namespace Embalagem.API.Data
+namespace LojaDoSeuManoel.Data
 {
     public class EmbalagemDbContext : DbContext
     {

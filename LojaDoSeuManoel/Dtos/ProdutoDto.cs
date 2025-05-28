@@ -1,4 +1,4 @@
-﻿namespace Embalagem.API.Dtos;
+﻿namespace LojaDoSeuManoel.Dtos;
 
 public class ProdutoDto
 {

@@ -14,7 +14,7 @@ services:
   embalagemapi:
     build:
       context: ..
-      dockerfile: Embalagem.API/Dockerfile
+      dockerfile: LojaDoSeuManoel/Dockerfile
     ports:
       - "8080:80"
     depends_on:

@@ -1,6 +1,6 @@
-﻿using Embalagem.API.Models;
+﻿using LojaDoSeuManoel.Models;
 
-namespace Embalagem.API.Services;
+namespace LojaDoSeuManoel.Services;
 
 public class EmbalagemService
 {
