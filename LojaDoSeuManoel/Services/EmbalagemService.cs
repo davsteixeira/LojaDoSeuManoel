@@ -29,7 +29,7 @@ public class EmbalagemService
                 foreach (var produto in produtosRestantes.ToList())
                 {
                     var volumeProduto = produto.Altura * produto.Largura * produto.Comprimento;
-
+                    
                     if (volumeProduto <= (volumeMaximoCaixa - volumeUsado) &&
                         produto.Altura <= modeloCaixa.Altura &&
                         produto.Largura <= modeloCaixa.Largura &&
