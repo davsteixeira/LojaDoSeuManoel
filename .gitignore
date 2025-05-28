@@ -1,0 +1,50 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.ide
+
+# Visual Studio
+.vscode/
+.vs/
+
+# Rider
+.idea/
+
+# Build results
+*.dll
+*.exe
+*.app
+*.log
+*.pdb
+*.cache
+*.db
+
+# Publish output
+/app/publish/
+**/publish/
+**/build/
+
+# User-specific files
+*.swp
+*.bak
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.tar
+*.pid
+
+# Others
+*.nupkg
+*.snupkg
+
+# Environment / config
+.env
+.env.*
