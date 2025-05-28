@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Embalagem.API.Models;
+namespace LojaDoSeuManoel.Models;
 
 public class Pedido
 {
