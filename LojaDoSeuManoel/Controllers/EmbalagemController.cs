@@ -3,55 +3,64 @@ using LojaDoSeuManoel.Models;
 using LojaDoSeuManoel.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LojaDoSeuManoel.Controllers;
-
-[ApiController]
-[Route("[controller]")]
-public class EmbalagemController : ControllerBase
+namespace LojaDoSeuManoel.Controllers
 {
-    private readonly EmbalagemService _service;
-
-    public EmbalagemController(EmbalagemService service)
+    [ApiController]
+    [Route("[controller]")]
+    public class EmbalagemController : ControllerBase
     {
-        _service = service;
-    }
+        private readonly EmbalagemService _service;
 
-    [HttpPost]
-    public ActionResult<List<PedidoResponse>> Post(List<PedidoRequest> pedidos)
-    {
-        var resposta = new List<PedidoResponse>();
-
-        foreach (var pedido in pedidos)
+        public EmbalagemController(EmbalagemService service)
         {
-            var produtos = pedido.Produtos.Select(p => new Produto
-            {
-                Nome = p.Nome,
-                Altura = p.Altura,
-                Largura = p.Largura,
-                Comprimento = p.Comprimento
-            }).ToList();
-
-            var caixasComProdutos = _service.Embalar(produtos);
-
-            var pedidoResposta = new PedidoResponse
-            {
-                PedidoId = pedido.Id,
-                Caixas = caixasComProdutos.Select(c => new CaixaResponse
-                {
-                    Nome = c.caixa.Nome,
-                    Produtos = c.produtos.Select(p => new ProdutoDto
-                    {
-                        Nome = p.Nome,
-                        Altura = p.Altura,
-                        Largura = p.Largura,
-                        Comprimento = p.Comprimento
-                    }).ToList()
-                }).ToList()
-            };
-
-            resposta.Add(pedidoResposta);
+            _service = service;
         }
 
-        return Ok(resposta);
+        [HttpPost]
+        public ActionResult<List<PedidoResponseDto>> Post([FromBody] RequisicaoPedidosDto requisição)
+        {
+            var resposta = new List<PedidoResponseDto>();
+
+            foreach (var pedido in requisição.Pedidos)
+            {
+                var produtos = pedido.Produtos.Select(p => new Produto
+                {
+                    Produto_Id = p.Produto_Id,
+                    Nome = p.Produto_Id,
+                    Altura = p.Dimensoes.Altura,
+                    Largura = p.Dimensoes.Largura,
+                    Comprimento = p.Dimensoes.Comprimento
+                }).ToList();
+
+                var caixasComProdutos = _service.Embalar(produtos);
+
+                var pedidoResposta = new PedidoResponseDto
+                {
+                    Pedido_Id = pedido.Pedido_Id,
+                    Caixas = caixasComProdutos.Select(c =>
+                    {
+                        var caixaResponse = new CaixaResponseDto
+                        {
+                            Caixa_Id = c.produtos.Count == 0 ? null : c.caixa?.Nome,
+                            Produtos = c.produtos.Select(p => p.Nome).ToList(),
+                        };
+
+                        if (c.produtos.Count == 0)
+                        {
+                            caixaResponse.Observacao = "Produto não cabe em nenhuma caixa disponível.";
+                        }
+
+                        return caixaResponse;
+                    }).ToList()
+                };
+
+                resposta.Add(pedidoResposta);
+            }
+
+            return Ok(resposta);
+        }
+
+
     }
 }
+

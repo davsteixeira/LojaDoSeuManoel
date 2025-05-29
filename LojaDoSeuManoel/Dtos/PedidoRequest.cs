@@ -1,8 +1,8 @@
 ﻿namespace LojaDoSeuManoel.Dtos;
 
-public class PedidoRequest
+public class PedidoRequestDto
 {
-    public int Id { get; set; }
+    public int Pedido_Id { get; set; }
     public List<ProdutoDto> Produtos { get; set; } = new();
 }
 
