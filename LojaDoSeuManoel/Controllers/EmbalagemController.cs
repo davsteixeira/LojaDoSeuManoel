@@ -67,8 +67,6 @@ namespace LojaDoSeuManoel.Controllers
 
             return Ok(resposta);
         }
-
-
     }
 }
 
