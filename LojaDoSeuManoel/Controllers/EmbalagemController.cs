@@ -1,12 +1,14 @@
 ﻿using LojaDoSeuManoel.Dtos;
 using LojaDoSeuManoel.Models;
 using LojaDoSeuManoel.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LojaDoSeuManoel.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class EmbalagemController : ControllerBase
     {
         private readonly EmbalagemService _service;
