@@ -29,15 +29,17 @@ public class EmbalagemService
                 foreach (var produto in produtosRestantes.ToList())
                 {
                     var volumeProduto = produto.Altura * produto.Largura * produto.Comprimento;
-                    
-                    if (volumeProduto <= (volumeMaximoCaixa - volumeUsado) &&
-                        produto.Altura <= modeloCaixa.Altura &&
+
+                    if (produto.Altura <= modeloCaixa.Altura &&
                         produto.Largura <= modeloCaixa.Largura &&
                         produto.Comprimento <= modeloCaixa.Comprimento)
                     {
-                        produtosNaCaixa.Add(produto);
-                        volumeUsado += volumeProduto;
-                        produtosRestantes.Remove(produto);
+                        if (volumeProduto <= (volumeMaximoCaixa - volumeUsado))
+                        {
+                            produtosNaCaixa.Add(produto);
+                            volumeUsado += volumeProduto;
+                            produtosRestantes.Remove(produto);
+                        }
                     }
                 }
 
@@ -51,10 +53,13 @@ public class EmbalagemService
 
             if (!produtoFoiAlojado)
             {
-                throw new Exception("Produtos excedem o limite de tamanho das caixas disponíveis.");
+                var produtoNaoAcomodado = produtosRestantes.First();
+                resultado.Add((null, new List<Produto> { produtoNaoAcomodado }));
+                break;
             }
         }
 
         return resultado;
     }
+
 }

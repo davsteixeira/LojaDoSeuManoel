@@ -1,7 +1,7 @@
 ﻿namespace LojaDoSeuManoel.Dtos;
 
-public class PedidoResponse
+public class PedidoResponseDto
 {
-    public int PedidoId { get; set; }
-    public List<CaixaResponse> Caixas { get; set; } = new();
+    public int Pedido_Id { get; set; }
+    public List<CaixaResponseDto> Caixas { get; set; } = new();
 }
