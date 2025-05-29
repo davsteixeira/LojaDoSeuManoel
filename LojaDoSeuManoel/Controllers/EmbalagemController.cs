@@ -21,6 +21,12 @@ namespace LojaDoSeuManoel.Controllers
         [HttpPost]
         public ActionResult<List<PedidoResponseDto>> Post([FromBody] RequisicaoPedidosDto requisição)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var resposta = new List<PedidoResponseDto>();
 
             foreach (var pedido in requisição.Pedidos)
