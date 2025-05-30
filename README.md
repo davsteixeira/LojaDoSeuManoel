@@ -19,7 +19,7 @@ SA_PASSWORD=SuaSenha
 ### Clone o repositório:
 
 ```bash
-git clone https://seu-repositorio.com/lojadoseumanoel.git
+git clone https://github.com/davsteixeira/LojaDoSeuManoel.git
 ```
 
 ### Crie um arquivo .env na raiz do projeto (nível do docker-compose.yml):
