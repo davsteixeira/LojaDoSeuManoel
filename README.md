@@ -27,6 +27,7 @@ git clone https://seu-repositorio.com/lojadoseumanoel.git
 ```env
 SA_PASSWORD=SuaSenha
 ```
+e após isso altere também no arquivo docker-compose.yml
 
 ### Ajuste a string de conexão do banco de dados definindo uma variável de ambiente DB_PASSWORD:
 ```bash
